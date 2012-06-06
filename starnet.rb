@@ -83,34 +83,40 @@ end
 
 def options_parse()
 	options = {}
-	OptionParser.new do |opts|
-		opts.banner = "Star-Net AR800 Management utility\nUsage: #{$0} [options] <target>"
-		# Raw command
-		options[:raw] = nil
-		opts.on('-r CMD', '--raw CMD', 'Execute an arbitrary command on remote host') do |cmd|
-			options[:raw] = cmd
-		end
-		# Show ARP table
-		options[:arpshow] = false
-		opts.on('-a', '--arpshow', 'Show ARP table') do
-			options[:arpshow] = true
-		end
-		# Show MAC table
-		options[:macshow] = false
-		opts.on('-m', '--macshow', 'Show MAC table') do
-			options[:macshow] = true
-		end
-		# Ping HOSTS
-		options[:ping] = nil
-		opts.on('-p HOSTS', '--ping HOSTS', 'Ping a comma-separated set of hostnames') do |hosts|
-			options[:ping] = hosts
-		end
-		# Help
-		opts.on('-h', '--help', 'Display usage information') do
-			puts opts
-			exit
-		end
-	end.parse!
+	begin
+		OptionParser.new do |opts|
+			opts.banner = "Star-Net AR800 Management utility\nUsage: #{$0} [options] <target>"
+			# Raw command
+			options[:raw] = nil
+			opts.on('-r CMD', '--raw CMD', 'Execute an arbitrary command on remote host') do |cmd|
+				options[:raw] = cmd
+			end
+			# Show ARP table
+			options[:arpshow] = false
+			opts.on('-a', '--arpshow', 'Show ARP table') do
+				options[:arpshow] = true
+			end
+			# Show MAC table
+			options[:macshow] = false
+			opts.on('-m', '--macshow', 'Show MAC table') do
+				options[:macshow] = true
+			end
+			# Ping HOSTS
+			options[:ping] = nil
+			opts.on('-p HOSTS', '--ping HOSTS', 'Ping a comma-separated set of hostnames') do |hosts|
+				options[:ping] = hosts
+			end
+			# Help
+			opts.on('-h', '--help', 'Display usage information') do
+				puts opts
+				exit
+			end
+		end.parse!
+	rescue OptionParser::MissingArgument
+		error "Option is missing an argument!"
+	rescue OptionParser::InvalidOption
+		error "Invalid option!"
+	end
 	options
 end
 
