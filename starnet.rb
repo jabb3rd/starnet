@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-# Version: 0.01a build 3 (2012-06-17)
+# Version: 0.01a build 4 (2012-06-18)
 
 require 'optparse'
 require 'net/telnet'
@@ -21,7 +21,7 @@ class StarnetRouter
 			result = @client.login({
 				'Name' => 'admin',
 				'Password' => password,
-				'LoginPrompt' => /STAR-NET ADSL2\+ Router\nLogin:|Router v1.5\nLogin:|MSW41p1 v2.5\nLogin:/,
+				'LoginPrompt' => /STAR-NET ADSL2\+ Router\nLogin:|Router v1.5\nLogin:|MSW41p? v2.5\nLogin:/,
 				'PasswordPrompt' => /Password:/
 			})
 			# Raise an exception if could not login
