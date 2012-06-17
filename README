@@ -1,0 +1,13 @@
+This is a Fujian Star-Net AR800 remote control tool that works via telnet.
+It implements some useful commands, for example:
+
+* ARP table request
+* MAC table request
+* Execution of a raw command
+* WPS PIN request
+* Ping a set of given hosts returning alive ones
+
+TODO:
+
+Make some firewall interaction fun (detecting/adding/removing/changing iptables rules).
+

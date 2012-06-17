@@ -89,7 +89,7 @@ class StarnetRouter
 		# Do this only once
 		if @nvram.nil?
 			error "Not connected" unless @connected
-			puts msg if msg != ''
+			puts msg unless msg == ''
 			result = @client.cmd('cat /var/nvram').split("\n")
 			result.shift
 			@nvram = result[0] if result
