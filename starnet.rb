@@ -21,7 +21,7 @@ class StarnetRouter
 			result = @client.login({
 				'Name' => 'admin',
 				'Password' => password,
-				'LoginPrompt' => /STAR-NET ADSL2\+ Router\nLogin:|Router v1.5\nLogin:|MSW41p? v2.5\nLogin:/,
+				'LoginPrompt' => /STAR-NET ADSL2\+ Router\nLogin:|Router v1.5\nLogin:|MSW41p. v2.5\nLogin:/,
 				'PasswordPrompt' => /Password:/
 			})
 			# Raise an exception if could not login
